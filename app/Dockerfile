@@ -1,11 +1,11 @@
-FROM python:3.10-alpine3.21
+FROM python:3.12-alpine
 LABEL MANTAINER="Pedro Ramos"
 
 WORKDIR /app
 
 COPY . /app
 
-RUN apk add --no-cache curl \
+RUN apk upgrade --no-cache && apk add --no-cache curl \
     && pip install --trusted-host pypi.python.org -r requirements.txt
 
 EXPOSE 8000
